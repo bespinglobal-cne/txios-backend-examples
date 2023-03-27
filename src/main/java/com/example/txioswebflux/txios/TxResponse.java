@@ -3,7 +3,6 @@ package com.example.txioswebflux.txios;
 /**
  * Notifier응답 인터페이스 계약명세 DTO
  */
-
 public class TxResponse<R> {
      String tx_id; // Contract
      Boolean result; // Contract

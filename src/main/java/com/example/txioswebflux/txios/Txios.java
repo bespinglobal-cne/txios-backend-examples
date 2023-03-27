@@ -54,15 +54,14 @@ public class Txios {
                         loging("onOpen Socket");
                         String txid = null;
                         try {
-                    
                             txid = getTxId(payload);
                         } catch (IOException e) {
                             e.printStackTrace();
                             consumer.error(e);
                         }
-                        String jsonSerialized = socketMapper.serialize(txid);
-                        loging("Request Notifier", jsonSerialized);
-                        this.send(jsonSerialized);
+                        String notifierRequestJson = socketMapper.serialize(txid);
+                        loging("Request Notifier", notifierRequestJson);
+                        this.send(notifierRequestJson);
                     }
 
                     @Override
@@ -136,12 +135,12 @@ public class Txios {
         return txId;
     }
     private void loging(String action){
-        if(this.loggingListener !=null){
+        if(this.loggingListener != null){
             this.loggingListener.onLog(action, null);
         }
     }
     private void loging(String action, String message){
-        if(this.loggingListener !=null){
+        if(this.loggingListener != null){
             this.loggingListener.onLog(action, message);
         }
     }   
@@ -150,8 +149,6 @@ public class Txios {
         private String notifierUrl = null;
         NotifierObjectMapper socketMapper = null;
         private LoggingListener loggingListener = null;
-
-      
 
         public Builder runnerUrl(String runnerUrl) {
             this.runnerUrl = runnerUrl;

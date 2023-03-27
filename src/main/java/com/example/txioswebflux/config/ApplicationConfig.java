@@ -12,8 +12,8 @@ public class ApplicationConfig {
     @Bean
     public Txios txios() {
         return new Txios.Builder()
-        .notifierUrl("wss://notifier.msamaker.bespinglobal.com/txresult")
-        .runnerUrl("https://runner.msamaker.bespinglobal.com/runner/routeRequest")
+        .notifierUrl("wss://dev-notifier.msamaker.bespinglobal.com/txresult")
+        .runnerUrl("https://dev-runner.msamaker.bespinglobal.com/runner/routeRequest")
         .logging((action, message) -> {
             logger.info("-----------------------------------------------");
             logger.info("action  : " + action);
